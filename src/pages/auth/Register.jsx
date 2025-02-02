@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Form from './components/Form';
+import { baseUrl } from '../../config';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
@@ -8,7 +9,7 @@ const Register = () => {
 
   const handleRegister = async (data) => {
     try {
-      const response = await axios.post("https://react30.onrender.com/api/user/register", data, {
+      const response = await axios.post(`${baseUrl}/register`, data, {
         validateStatus: (status) => status < 500, // Reject only if the status code is >= 500
       });
       if (response.status === 201) {
