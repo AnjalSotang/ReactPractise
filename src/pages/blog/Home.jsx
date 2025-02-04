@@ -1,19 +1,32 @@
-import React from 'react'
-// import Layout from '../../components/layout/layout'
-import Card from './components/card/Card'
-import Layout from '../../components/layout/layout'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import Card from './components/card'
+
 
 
 const Home = () => {
+  const [blogs , setBlogs] = useState([])
+  const fetchBlogs = async () => {
+    const response = await axios.get("https://react30.onrender.com/api/user/blog")
+    if(response.status === 200){
+      setBlogs(response.data.data)
+    }
+  }
+
+  useEffect(() => {
+    fetchBlogs()
+  }, [])
+
   return (
-    <Layout>
        <div className= "flex flex-wrap justify-center space-x-5 mt-6">
-       <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+        {
+          blogs.length > 0 && blogs.map((blog) => {
+            return (
+              <Card blog = {blog}/>
+            )
+          })
+        }
        </div>
-    </Layout>
   )
 }
 
