@@ -1,9 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import { baseUrl } from '../../config'
-import Layout from '../../components/layout/Layout'
 import { useNavigate } from 'react-router-dom'
 import Form from './components/Form'
+import Layout from '../../components/layout/layout'
 
 const AddBlog = () => {
   const navigate = useNavigate()
