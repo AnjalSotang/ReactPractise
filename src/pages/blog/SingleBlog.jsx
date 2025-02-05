@@ -36,7 +36,7 @@ const SingleBlog = () => {
         navigate("/");
       }
     } catch (error) {
-      alert("Error deleting blog:");
+      alert(error?.response?.data?.message);  
     }
   };
 
